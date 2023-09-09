@@ -4,41 +4,57 @@ A simple example of how to create a reusable Go module with commonly used tools.
 
 The included tools are:
 
-- [ ] Read JSON
-- [ ] Write JSON
-- [ ] Produce a JSON encoded error response
+- [X] Read JSON
+- [X] Write JSON
+- [X] Produce a JSON encoded error response
 - [X] Upload a file of files to a specified directory
 - [X] Download a static file
 - [X] Get a random string of length n
-- [ ] Post JSON to a remote service
+- [X] Post JSON to a remote service
 - [X] Create a directory, including all parent directories, if it does not already exist
 - [X] Create a URL safe slug from a string
 
 ## Function Notes
-**Name:** Slugify
-**Input(s):** String
-**Output(s):** String with any special character stripped out and spaces replaced by dashes
-**Sample:** ```slug, err := tool.Slugify("string")```
-
-**Name:** CreateDirIfNotExist
-**Notes:** accepts a string, parses it and creates a directory and any parent directories if they do not exist.
-**Sample:** ```err := tool.CreateDirIfNotExist("./testdata/myDir")```
-
-**Name:** RandomString
-**Notes:** accepts an int and returns a random string of int length.
-**Sample:** ```s := tool.RandomString(10)```
-
-**Name:** DownloadStaticFile
-**Notes:** forces a file to be downloaded and not displayed in a browser.
-**Sample:** ```tool.DownloadStaticFile(rr, req, "./testdata/pic.jpg", "puppy.jpg")```
-
-**Name:** UploadFiles
-**Notes:** Multi file uploader
-**Sample:** ```uploadedFiles, err := testTools.UploadFiles(request, "./testdata/uploads/", e.renameFile)```
-
+**Name:** Slugify <br />
+**Input(s):** String <br />
+**Output(s):** String with any special character stripped out and spaces replaced by dashes <br />
+**Sample:** ```slug, err := tool.Slugify("string")``` <br />
+<br />
+**Name:** CreateDirIfNotExist <br />
+**Notes:** accepts a string, parses it and creates a directory and any parent directories if they do not exist. <br />
+**Sample:** ```err := tool.CreateDirIfNotExist("./testdata/myDir")``` <br />
+<br />
+**Name:** RandomString <br />
+**Notes:** accepts an int and returns a random string of int length. <br />
+**Sample:** ```s := tool.RandomString(10)``` <br />
+<br />
+**Name:** DownloadStaticFile <br />
+**Notes:** forces a file to be downloaded and not displayed in a browser. <br />
+**Sample:** ```tool.DownloadStaticFile(rr, req, "./testdata/pic.jpg", "puppy.jpg")``` <br />
+<br />
+**Name:** UploadFiles <br />
+**Notes:** Multi file uploader <br />
+**Sample:** ```uploadedFiles, err := testTools.UploadFiles(request, "./testdata/uploads/", e.renameFile)``` <br />
+<br />
 **Name:** UploadOneFile
 **Notes:** Helper function that will upload one  file
 **Sample:** ```uploadedFiles, err := testTools.UploadOneFile(request, "./testdata/uploads/", true)```
+
+**Name:** ReadJSON
+**Notes:** tries to read the body of a request and converts from json into a go data variable
+**Sample:** ```err = testTool.ReadJSON(rr, req, &decodedJSON)```
+
+**Name:** WriteJSON 
+**Notes:** takes a response status code and arbitrary data and writes json to the client
+**Sample:** ```err := testTools.WriteJSON(rr, http.StatusOK, payload, headers)```
+
+**Name:** ErrorJSON
+**Notes:** takes an error, & optionally a status code, and generates and sends a JSON error message
+**Sample:** ```err := testTools.ErrorJSON(rr, errors.New("some error"), http.StatusServiceUnavailable)```
+
+**Name:** PushJSONToRemote
+**Notes:** posts arbitrary data to some URL as JSON, and returns the response, status code, and error, if any.
+**Sample:** ```_, _, err := testTools.PushJSONToRemote("http://example.com/some/path", foo, client)```
 
 ## Installation
 
