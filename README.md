@@ -7,7 +7,7 @@ The included tools are:
 - [ ] Read JSON
 - [ ] Write JSON
 - [ ] Produce a JSON encoded error response
-- [ ] Upload a file of files to a specified directory
+- [X] Upload a file of files to a specified directory
 - [X] Download a static file
 - [X] Get a random string of length n
 - [ ] Post JSON to a remote service
@@ -31,6 +31,14 @@ The included tools are:
 **Name:** DownloadStaticFile
 **Notes:** forces a file to be downloaded and not displayed in a browser.
 **Sample:** ```tool.DownloadStaticFile(rr, req, "./testdata/pic.jpg", "puppy.jpg")```
+
+**Name:** UploadFiles
+**Notes:** Multi file uploader
+**Sample:** ```uploadedFiles, err := testTools.UploadFiles(request, "./testdata/uploads/", e.renameFile)```
+
+**Name:** UploadOneFile
+**Notes:** Helper function that will upload one  file
+**Sample:** ```uploadedFiles, err := testTools.UploadOneFile(request, "./testdata/uploads/", true)```
 
 ## Installation
 
