@@ -36,26 +36,26 @@ The included tools are:
 **Notes:** Multi file uploader <br />
 **Sample:** ```uploadedFiles, err := testTools.UploadFiles(request, "./testdata/uploads/", e.renameFile)``` <br />
 <br />
-**Name:** UploadOneFile
-**Notes:** Helper function that will upload one  file
-**Sample:** ```uploadedFiles, err := testTools.UploadOneFile(request, "./testdata/uploads/", true)```
-
-**Name:** ReadJSON
-**Notes:** tries to read the body of a request and converts from json into a go data variable
-**Sample:** ```err = testTool.ReadJSON(rr, req, &decodedJSON)```
-
-**Name:** WriteJSON 
-**Notes:** takes a response status code and arbitrary data and writes json to the client
-**Sample:** ```err := testTools.WriteJSON(rr, http.StatusOK, payload, headers)```
-
-**Name:** ErrorJSON
-**Notes:** takes an error, & optionally a status code, and generates and sends a JSON error message
-**Sample:** ```err := testTools.ErrorJSON(rr, errors.New("some error"), http.StatusServiceUnavailable)```
-
-**Name:** PushJSONToRemote
-**Notes:** posts arbitrary data to some URL as JSON, and returns the response, status code, and error, if any.
-**Sample:** ```_, _, err := testTools.PushJSONToRemote("http://example.com/some/path", foo, client)```
-
+**Name:** UploadOneFile <br />
+**Notes:** Helper function that will upload one  file <br />
+**Sample:** ```uploadedFiles, err := testTools.UploadOneFile(request, "./testdata/uploads/", true)``` <br />
+<br />
+**Name:** ReadJSON <br />
+**Notes:** tries to read the body of a request and converts from json into a go data variable <br />
+**Sample:** ```err = testTool.ReadJSON(rr, req, &decodedJSON)``` <br />
+<br />
+**Name:** WriteJSON <br /> 
+**Notes:** takes a response status code and arbitrary data and writes json to the client <br />
+**Sample:** ```err := testTools.WriteJSON(rr, http.StatusOK, payload, headers)``` <br />
+<br />
+**Name:** ErrorJSON <br />
+**Notes:** takes an error, & optionally a status code, and generates and sends a JSON error message <br />
+**Sample:** ```err := testTools.ErrorJSON(rr, errors.New("some error"), http.StatusServiceUnavailable)``` <br />
+<br />
+**Name:** PushJSONToRemote <br />
+**Notes:** posts arbitrary data to some URL as JSON, and returns the response, status code, and error, if any. <br />
+**Sample:** ```_, _, err := testTools.PushJSONToRemote("http://example.com/some/path", foo, client)``` <br />
+<br />
 ## Installation
 
 `go get github.com/jeff-mcintire/go-toolkit/`
