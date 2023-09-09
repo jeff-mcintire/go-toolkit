@@ -11,8 +11,19 @@ The included tools are:
 - [ ] Download a static file
 - [ ] Get a random string of length n
 - [ ] Post JSON to a remote service
-- [ ] Create a directory, including all parent directories, if it does not already exist
+- [X] Create a directory, including all parent directories, if it does not already exist
 - [X] Create a URL safe slug from a string
+
+## Function Notes
+**Name:** Slugify
+**Input(s):** String
+**Output(s):** String with any special character stripped out and spaces replaced by dashes
+
+**Name:** CreateDirIfNotExist
+**Input(s):** String A path
+**Output(s):** None
+
+
 
 ## Installation
 

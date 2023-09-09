@@ -2,6 +2,7 @@ package toolkit
 
 import (
 	"errors"
+	"os"
 	"regexp"
 	"strings"
 )
@@ -30,6 +31,18 @@ func (t *Tools) RandomString(n int) string {
 	return string(s)
 }
 */
+
+// CreateDirIfNotExist creates a directory, and all necessary parents, if it does not exist
+func (t *Tools) CreateDirIfNotExist(path string) error {
+	const mode = 0755
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		err := os.MkdirAll(path, mode)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
 
 // Slugify is a (very) simple means of creating a slug from a string
 func (t *Tools) Slugify(s string) (string, error) {
