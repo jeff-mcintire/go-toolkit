@@ -8,8 +8,8 @@ The included tools are:
 - [ ] Write JSON
 - [ ] Produce a JSON encoded error response
 - [ ] Upload a file of files to a specified directory
-- [ ] Download a static file
-- [ ] Get a random string of length n
+- [X] Download a static file
+- [X] Get a random string of length n
 - [ ] Post JSON to a remote service
 - [X] Create a directory, including all parent directories, if it does not already exist
 - [X] Create a URL safe slug from a string
@@ -18,12 +18,19 @@ The included tools are:
 **Name:** Slugify
 **Input(s):** String
 **Output(s):** String with any special character stripped out and spaces replaced by dashes
+**Sample:** ```slug, err := tool.Slugify("string")```
 
 **Name:** CreateDirIfNotExist
-**Input(s):** String A path
-**Output(s):** None
+**Notes:** accepts a string, parses it and creates a directory and any parent directories if they do not exist.
+**Sample:** ```err := tool.CreateDirIfNotExist("./testdata/myDir")```
 
+**Name:** RandomString
+**Notes:** accepts an int and returns a random string of int length.
+**Sample:** ```s := tool.RandomString(10)```
 
+**Name:** DownloadStaticFile
+**Notes:** forces a file to be downloaded and not displayed in a browser.
+**Sample:** ```tool.DownloadStaticFile(rr, req, "./testdata/pic.jpg", "puppy.jpg")```
 
 ## Installation
 
