@@ -1,7 +1,10 @@
 package toolkit
 
 import (
+	"crypto/rand"
 	"errors"
+	"fmt"
+	"net/http"
 	"os"
 	"regexp"
 	"strings"
@@ -18,7 +21,6 @@ type Tools struct {
 	AllowUnknownFields bool
 }
 
-/*
 // RandomString returns a string of random characters of length n, using randomStringSource
 // as the source for the string
 func (t *Tools) RandomString(n int) string {
@@ -30,7 +32,6 @@ func (t *Tools) RandomString(n int) string {
 	}
 	return string(s)
 }
-*/
 
 // CreateDirIfNotExist creates a directory, and all necessary parents, if it does not exist
 func (t *Tools) CreateDirIfNotExist(path string) error {
@@ -56,4 +57,14 @@ func (t *Tools) Slugify(s string) (string, error) {
 		return "", errors.New("after removing characters, slug is zero length")
 	}
 	return slug, nil
+}
+
+// DownloadStaticFile downloads a file, and tries to force the browser to avoid displaying it
+// in the browser window by setting content disposition. It also allows specification of the
+// display name
+func (t *Tools) DownloadStaticFile(w http.ResponseWriter, r *http.Request, pathName, displayName string) {
+	//fp := path.Join(p, file)
+	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=\"%s\"", displayName))
+
+	http.ServeFile(w, r, pathName)
 }
