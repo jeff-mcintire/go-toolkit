@@ -1,4 +1,4 @@
-# Web Toolkit in Go
+# Web Toolkit for Go
 
 A simple example of how to create a reusable Go module with commonly used tools.
 
